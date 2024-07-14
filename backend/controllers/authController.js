@@ -40,6 +40,8 @@ async function hashPassword(password) {
 
 export const signup = catchAsync(async (req, res, next) => {
   const { username, email, password, password_confirmation, gender } = req.body;
+
+  console.log("body" , req.body);
   if (!username || !email || !password || !password_confirmation) {
     return next(new AppError("All fields are required", 400));
   }
@@ -83,6 +85,7 @@ export const signup = catchAsync(async (req, res, next) => {
 
 export const login = catchAsync(async (req, res, next) => {
   const { email, password, profilePic } = req.body;
+  console.log("req body" , req.body);
 
   if (req.body?.provider === "google") {
     // Handle Google sign-in
@@ -90,7 +93,7 @@ export const login = catchAsync(async (req, res, next) => {
       where: { email: email },
       select: {
         id: true,
-        username: true,
+        username: true,        
         email: true,
         profilePic: true,
       },
@@ -105,10 +108,9 @@ export const login = catchAsync(async (req, res, next) => {
         data: {
           email: email,
           username: email.split("@")[0], // Using email as username
-          fullName: email,
           password: await hashPassword(email), // You might want to set a random
           profilePic,
-          gender: "male",
+          gender: "MALE",
         },
         select: {
           id: true,
