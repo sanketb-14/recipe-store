@@ -6,7 +6,7 @@
   "type":"module",
   "scripts": {
    
-    "start":" server.js"
+    "start":"node server.js"
   },
   "author": "sanket",
   "license": "ISC",
