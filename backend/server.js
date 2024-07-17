@@ -22,7 +22,7 @@ const corsOptions = {
   origin: (origin, callback) => {
     if (
       !origin ||
-      ["https://recipe-store.vercel.app", "http://localhost:3000"].indexOf(
+      ["https://recipee-store.vercel.app", "http://localhost:3000"].indexOf(
         origin
       ) !== -1
     ) {
