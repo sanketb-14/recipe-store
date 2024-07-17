@@ -42,7 +42,7 @@ export const fetchAllRecipe = async (queryParams) => {
 };
 
 export const getMyProfile = async (token) => {
-  console.log(token);
+  
   const response = await axios.get(`${baseUrl}/api/v1/auth/my-account`, {
     headers: {
       Authorization: `Bearer ${token.accessToken}`,
