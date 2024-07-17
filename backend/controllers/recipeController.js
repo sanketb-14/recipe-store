@@ -145,7 +145,7 @@ export const getAllRecipe = catchAsync(async (req, res, next) => {
 });
 
 export const getRecipe = catchAsync(async (req, res, next) => {
-  console.log("Recipe id", req.params.recipeId);
+//   console.log("Recipe id", req.params.recipeId);
 
   const recipe = await prisma.recipe.findUnique({
     where: { id: req.params.recipeId },

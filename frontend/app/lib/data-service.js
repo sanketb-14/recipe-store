@@ -54,15 +54,18 @@ export const getMyProfile = async (token) => {
 };
 
 export const getSingleRecipe = async (params) => {
-  const response = await axios.get(`${baseUrl}/api/v1/recipe/${params}`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await response.data;
-  return data;
+  try {
+    const response = await axios.get(`${baseUrl}/api/v1/recipe/${params}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching recipe:", error.response?.data || error.message);
+    throw error;
+  }
 };
-
 export const deleteRecipe = async (recipeId) => {
   const response = await axiosInstance.delete(
     `${baseUrl}/api/v1/auth/my-account/edit`,

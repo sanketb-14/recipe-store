@@ -35,7 +35,8 @@ const page = async ({ params }) => {
   
   const myProfile = session &&  await getMyProfile(session)
    const {id:userId} = myProfile?.user || "user"
-  
+
+ 
   
   
   const { recipe } = data;
