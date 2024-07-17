@@ -9,7 +9,7 @@ import { useProfile } from "../context/UserContext";
 import { useState } from "react";
 import { useToast } from "../hooks/useToast";
 import { followUserAction } from "../lib/action";
-import Recipe from "./Recipe";
+
 
 
 const FollowBtn = ({ recipeUser, followings }) => {

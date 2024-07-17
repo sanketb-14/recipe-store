@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "../components/Loader";
 import RecipeList from "../components/RecipeList";
-import Filter from "../components/Filter";
+
 import { Suspense } from "react";
 
 const page = () => {

@@ -29,7 +29,7 @@ const CreateRecipeForm = () => {
         servings: parseInt(data.servings),
         dietaryPreference: Array.isArray(data.dietaryPreference) ? data.dietaryPreference : [data.dietaryPreference],
       };
-      console.log("Formatted data", formattedData);
+    //   console.log("Formatted data", formattedData);
       mutation.mutate(formattedData);
       
     };

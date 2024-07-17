@@ -92,7 +92,7 @@ export const followUserAction = async (userIdToFollow) => {
     }
 
     const data = await response.json();
-    console.log("data: ", data);
+    // console.log("data: ", data);
     revalidatePath(`/home/${userIdToFollow}`);
     return data;
   } catch (error) {
@@ -102,7 +102,7 @@ export const followUserAction = async (userIdToFollow) => {
 };
 
 export const deleteRecipe = async (recipeId) => {
-  console.log("recipeId....: ", recipeId);
+  // console.log("recipeId....: ", recipeId);
   const session = await auth();
 
   const response = await fetch(`${baseUrl}/api/v1/auth/my-account/edit`, {

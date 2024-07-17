@@ -21,12 +21,7 @@ const DeleteRecipe = ({ user, recipeId }) => {
     onError:(err) =>showToast("Error deleting","error")
   });
 
-  if (error) {
-    console.log("error: ", error);
-  }
-  if (data) {
-    console.log("data", data);
-  }
+  
   const canDelete = recipeIds.includes(recipeId);
 
   return (

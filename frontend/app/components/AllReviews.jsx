@@ -9,7 +9,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const fetchReviews = async (recipeId) => {
   const { data } = await axios.get(`${baseUrl}/api/v1/recipe/${recipeId}/reviews`);
-  console.log("data", data);
+
   return data.reviews;
 };
 
@@ -20,7 +20,7 @@ const AllReviews = ({ recipeId }) => {
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  console.log("reviews", reviews);
+//   console.log("reviews", reviews);
 
   if (isLoading) return <div className="text-center">Loading reviews...</div>;
   if (error) return <div className="text-center text-red-500">An error occurred: {error.message}</div>;

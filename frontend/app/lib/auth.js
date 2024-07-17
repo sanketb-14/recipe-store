@@ -21,7 +21,7 @@ const authConfig = {
       },
       async authorize(credentials) {
         const { email, password } = credentials;
-        console.log("Attempting to authorize:", email);
+        // console.log("Attempting to authorize:", email);
         if (!email || !password) {
           throw new Error("Email and password are required");
         }

@@ -15,7 +15,7 @@ const AddToFavorites = ({favorites }) => {
   const isFavorite = favorites.some(item => item.recipeId === recipeId)
 
   const [state , setState] = useState(isFavorite)
-  console.log("state: ", state);
+  ;
 
   const mutation = useMutation({
     mutationFn: addToFavorites,

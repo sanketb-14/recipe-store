@@ -68,7 +68,7 @@ export const deleteRecipe = async (recipeId) => {
     `${baseUrl}/api/v1/auth/my-account/edit`,
     { data: recipeId } // Send recipeId in the request body
   );
-  console.log("response", response.data);
+  // console.log("response", response.data);
 
   return response.data;
 };
@@ -78,7 +78,7 @@ export const createRecipe = async (recipeData) => {
     `${baseUrl}/api/v1/recipe/create`,
     recipeData
   );
-  console.log("response", response.data);
+  // console.log("response", response.data);
   return response.data;
 };
 
@@ -95,6 +95,6 @@ export const createOrUpdateReview = async (recipeId, rating, comment) => {
     `${baseUrl}/api/v1/recipe/createReview/${recipeId}`,
     { rating, comment }
   );
-  console.log("response", response.data);
+  // console.log("response", response.data);
   return response.data;
 };

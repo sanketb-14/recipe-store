@@ -41,7 +41,7 @@ export function UserProvider({ children }) {
         setLoading(false);
       }
     };
-    console.log(error);
+
 
     fetchUser();
   }, []);
