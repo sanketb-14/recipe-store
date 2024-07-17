@@ -5,7 +5,7 @@ import Logo from '@/public/main-logo.svg'
 import { auth } from '../lib/auth'
 import SignOutButton from './SignOutButton'
 import ThemeChanger from './ThemeChanger'
-import { MdOutlineRestaurantMenu,MdOutlineFastfood,MdOutlinePermDeviceInformation } from "react-icons/md"
+import { MdOutlineRestaurantMenu,MdOutlinePermDeviceInformation } from "react-icons/md"
 
 
 
@@ -28,10 +28,7 @@ const Navigation = async() => {
             <li  className='btn text-sm sm:text-2xl flex items-center'>
                     <Link href='/home'><span className='text-xl font-bold text-accent'><MdOutlineRestaurantMenu /></span>Explore</Link>
                 </li>
-                
-                <li  className='text-sm btn sm:text-2xl flex items-center mx-auto'>
-                    <Link href='/create'><span className='text-xl font-bold text-accent'><MdOutlineFastfood /></span>Create-Recipe</Link>
-                </li>
+              
                 <li  className='text-sm btn sm:text-2xl flex items-center mx-auto'>
                     <Link href='/about'><span className='text-xl font-bold text-accent'><MdOutlinePermDeviceInformation /></span>About</Link>
                 </li>

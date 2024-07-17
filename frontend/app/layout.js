@@ -1,9 +1,15 @@
 
 import "./globals.css";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Josefin_Sans } from "next/font/google";
 import Navigation from "./components/Navigation";
 import { Toaster } from 'react-hot-toast';
 import { UserProvider } from "./context/UserContext";
+import ReactQueryProvider from "./lib/ReactQueryProvider";
+
+
+
+
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -20,16 +26,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="pastel">
+    <html lang="en" data-theme="winter">
       <body
         className={`${josefin.className} min-h-screen flex flex-col relative `}
-      >
+      > 
+      <ReactQueryProvider>
+        <ReactQueryDevtools/>
         <Toaster
           position="top-right"
           reverseOrder={false}
-          gutter={8}
+          gutter={12}
           toastOptions={{
-            duration: 5000,
+            duration: 3000,
             style: {
               background: '#363636',
               color: '#fff',
@@ -42,6 +50,8 @@ export default function RootLayout({ children }) {
             <main className="max-w-7xl mx-auto w-full flex justify-center ">{children}</main>
           </div>
         </UserProvider>
+        </ReactQueryProvider>
+        
       </body>
     </html>
   );

@@ -78,12 +78,11 @@ model Favorite {
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   recipeId  String
-  recipe    Recipe   @relation(fields: [recipeId], references: [id])
+  recipe    Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
 
   @@unique([userId, recipeId])
 }
-
 model Collection {
   id        String   @id @default(cuid())
   name      String

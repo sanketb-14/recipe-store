@@ -1,5 +1,8 @@
 import axios from "axios";
-import { revalidatePath } from "next/cache";
+import { useProfile } from "../context/UserContext";
+import axiosInstance from "@/helper/axiosInstance";
+
+// import { headers } from "next/headers";
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export async function getGuest(user) {
@@ -27,28 +30,71 @@ export async function createGuest(formData) {
   return response.data;
 }
 
-export const getUserDetails = async ({ accessToken }) => {
-  const response = await axios.get(`${baseUrl}/api/v1/auth/my-account`, {
+export const fetchAllRecipe = async (queryParams) => {
+  const response = await axios.get(`${baseUrl}/api/v1/recipe?${queryParams}`, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
     },
   });
- 
   const data = await response.data;
-  console.log("response", data);
+
   return data;
 };
 
+export const getMyProfile = async (token) => {
+  console.log(token);
+  const response = await axios.get(`${baseUrl}/api/v1/auth/my-account`, {
+    headers: {
+      Authorization: `Bearer ${token.accessToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.data;
+  return data;
+};
 
-export const fetchAllRecipe = async(queryParams)=>{
-  const  response = await axios.get(`${baseUrl}/api/v1/recipe?${queryParams}`, {
+export const getSingleRecipe = async (params) => {
+  const response = await axios.get(`${baseUrl}/api/v1/recipe/${params}`, {
     headers: {
       "Content-Type": "application/json",
     },
-  })
-  const  data = await response.data
+  });
+  const data = await response.data;
+  return data;
+};
 
-  return data
+export const deleteRecipe = async (recipeId) => {
+  const response = await axiosInstance.delete(
+    `${baseUrl}/api/v1/auth/my-account/edit`,
+    { data: recipeId } // Send recipeId in the request body
+  );
+  console.log("response", response.data);
 
-}
+  return response.data;
+};
+
+export const createRecipe = async (recipeData) => {
+  const response = await axiosInstance.post(
+    `${baseUrl}/api/v1/recipe/create`,
+    recipeData
+  );
+  console.log("response", response.data);
+  return response.data;
+};
+
+export const addToFavorites = async (recipeId) => {
+  const response = await axiosInstance.post(
+    `${baseUrl}/api/v1/auth/add-to-favorites`,
+    { recipeId } // Send as an object
+  );
+  return response.data;
+};
+
+export const createOrUpdateReview = async (recipeId, rating, comment) => {
+  const response = await axiosInstance.post(
+    `${baseUrl}/api/v1/recipe/createReview/${recipeId}`,
+    { rating, comment }
+  );
+  console.log("response", response.data);
+  return response.data;
+};
