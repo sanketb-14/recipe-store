@@ -163,7 +163,7 @@ export const protect = catchAsync(async (req, res, next) => {
 
   let token = req.cookies.jwt;
 
-  console.log("auth token: " , req.authorization);
+
 
  
   if (

@@ -23,15 +23,15 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-row md:flex-row items-center">
             <div className="md:w-1/2 text-white space-y-6">
-              <h1 className="text-4xl  md:text-6xl  font-bold leading-tight">
-                Welcome to the <br/>  <span className="text-nowrap text-7xl tracking-wider t ">Recipe-Store</span>
+              <h1 className="text-2xl sm:text-4xl  md:text-6xl  font-bold leading-tight">
+                Welcome to the <br/>  <span className="text-nowrap text-3xl sm:text-7xl tracking-wide sm:tracking-wider t ">Recipe-Store</span>
               </h1>
-              <p className="text-xl md:text-2xl">
+              <p className="text-xl sm:text-2xl md:text-2xl">
                 Unleash your creativity and Explore different World Food..
               </p>
              <Link href='/home'>
              
-             <button className="min-w-80 text-2xl tracking-wider mt-20  border-none  bg-gradient-to-br from-purple-600 to-blue-500 text-white font-bold py-3 px-8 rounded-full hover:bg-purple-100 transition  transform hover:translate-y-4   duration-500">
+             <button className="min-w-80 text-lg sm:text-2xl tracking-wider mt-20  border-none  bg-gradient-to-br from-purple-600 to-blue-500 text-white font-bold py-3 px-2 sm:px-8 rounded-full hover:bg-purple-100 transition  transform hover:translate-y-4   duration-500">
                 Explore
               </button></Link>
             </div>

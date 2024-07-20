@@ -1,13 +1,9 @@
-
 import Image from "next/image";
-import bg_img from "@/public/bg_img.jpeg"
+import bg_img from "@/public/bg_img.jpeg";
 
-
-const layout = async({ children }) => {
-
+const layout = async ({ children }) => {
   return (
-   
-    <div className="grid grid-cols-[16rem_1fr] h-full   gap-12">
+    <div className="grid grid-cols-1 h-full   gap-12">
       {" "}
       <main className="  ">
         <Image
@@ -25,7 +21,6 @@ const layout = async({ children }) => {
       </main>
       <div className="py-1 flex justify-end">{children}</div>
     </div>
-   
   );
 };
 

@@ -37,7 +37,7 @@ const MyRecipe = (user) => {
       <div className="w-full flex justify-end items-center">
         <label
           htmlFor="my_modal_7"
-          className="text-sm  btn btn-secondary sm:text-md flex items-center "
+          className="text-xs sm:text-sm btn-xs sm:btn-md btn btn-secondary sm:text-md flex items-center "
         >
           <span className="text-lg font-semibold text-secondary-content">
             <MdOutlineFastfood />

@@ -8,10 +8,10 @@ const page = () => {
   return (
     <div>
       <div>
-        <h1 className="text-4xl mb-5 text-accent font-medium">
+        <h1 className="text-2xl  sm:text-4xl mb-5 text-accent font-medium">
           Welcome! to the Recipe-Store
         </h1>
-        <p className="text-primary text-lg mb-10">
+        <p className="text-primary text-sm sm:text-lg mb-4 sm:mb-10">
           Welcome to Recipe Store, your ultimate destination for culinary
           inspiration and recipe sharing! Whether you're a seasoned chef or a
           kitchen novice, Recipe Store is designed to ignite your passion for

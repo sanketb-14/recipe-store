@@ -10,7 +10,7 @@ function SignOutButton() {
     <form action={signOutAction}>
       <button
         
-        className="btn  w-full tracking-widest bg-red-500 text-white border-none font-bold btn-xs sm:btn-sm "
+        className="btn text-xs sm:text-lg w-full tracking-widest bg-red-500 text-white border-none font-normal sm:font-semibold btn-xs sm:btn-sm "
       >
         
         <span>Sign out</span>

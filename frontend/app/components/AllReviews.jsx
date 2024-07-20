@@ -31,7 +31,7 @@ const AllReviews = ({ recipeId }) => {
 
   return (
     <div className="shadow overflow-hidden sm:rounded-md">
-      <ul className="divide-y divide-gray-200 grid grid-cols-2 gap-4 bg-base-100">
+      <ul className="divide-y divide-gray-200 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 bg-base-100">
         {reviews.map((review) => (
           <li key={review.id} className="px-4 py-4 sm:px-6 rounded-lg shadow-xl">
             

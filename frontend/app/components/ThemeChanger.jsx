@@ -24,7 +24,7 @@ const ThemeChanger = () => {
   return (
     <div className="flex-none bg-transparent hover:bg-transparent">
       {/* Toggle button here */}
-      <button className="btn btn-sm btn-square bg-transparent hover:bg-transparent border-none">
+      <button className="btn btn-xs sm:btn-sm btn-square bg-transparent hover:bg-transparent border-none">
         <label className="swap swap-rotate">
           {/* this hidden checkbox controls the state */}
           <input

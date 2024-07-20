@@ -7,7 +7,7 @@ const layout = async({ children }) => {
    
   return (
 
-    <div className="grid grid-cols-[16rem_1fr] h-full   gap-12">
+    <div className="grid grid-cols-1 h-full   gap-12 h-full ">
       {" "}
       <main className="">
         <Image
@@ -18,7 +18,7 @@ const layout = async({ children }) => {
           placeholder="blur"
         />
         <div className="w-full flex ">
-          <h1 className="relative  text-2xl sm:text-5xl font-bold text-end text-white translate-x-80 duration-200 ease-in transform tracking-wide text-nowrap">
+          <h1 className="relative  text-2xl sm:text-5xl font-bold text-end text-white  tracking-wide text-nowrap">
             Welcome to Recipe-Store{" "}
           </h1>
         </div>

@@ -35,7 +35,7 @@ const AddToFavorites = ({favorites }) => {
   return (
     <button
       onClick={handleClick}
-      className="btn btn-primary"
+      className="btn btn-primary btn-sm sm:btn-md"
       disabled={mutation.isPending}
     >
       {mutation.isPending ? "Loading..." : (state ? "Remove from favorites" : "Add to favorites")}

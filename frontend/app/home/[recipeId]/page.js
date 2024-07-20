@@ -22,7 +22,7 @@ const Page = async ({ params }) => {
 
   return (
     <div>
-      <h1 className="text-4xl mb-5 text-accent font-medium">
+      <h1 className="text-2xl sm:text-4xl  mb-3 sm:mb-5 text-accent font-medium">
         Welcome! to the Recipe-Store
       </h1>
       <Suspense fallback={<Loader />} key={params}>

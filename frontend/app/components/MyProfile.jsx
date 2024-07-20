@@ -84,17 +84,17 @@ const MyProfile = ({ session }) => {
                     {profileData.following ? profileData.following.length : 0}{" "}
                   </p>
                 </div>
-                <button
-                  className="btn btn-primary btn-xs btn-wide tracking-widest sm:btn-md "
+                {/* <button
+                  className="btn btn-primary btn-xs text-xs sm:text-lg tracking-widest sm:btn-md "
                   onClick={() =>
                     showToast("Edit profile functionality coming soon!", "info")
                   }
                 >
-                  <span className="text-primary-content m-2">
+                  <span className="text-primary-content m-0 sm:m-2">
                     <FaEdit />
                   </span>
                   Edit Profile
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

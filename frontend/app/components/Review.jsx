@@ -75,7 +75,7 @@ const Review = ({ myProfile, recipeId }) => {
         </div>
         <button 
           type='submit' 
-          className='btn btn-primary'
+          className='btn btn-primary btn-sm sm:btn-md'
           disabled={mutation.isPending}
         >
           {mutation.isPending ? 'Submitting...' : (isEditing ? 'Update Review' : 'Submit Review')}
