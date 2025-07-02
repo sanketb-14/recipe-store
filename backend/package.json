@@ -6,7 +6,8 @@
   "type":"module",
   "scripts": {
    
-    "start":"node server.js"
+    "start":"node server.js",
+     "build": "echo 'No build step needed'"
   },
   "author": "sanket",
   "license": "ISC",
