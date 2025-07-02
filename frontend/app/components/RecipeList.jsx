@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Pagination from "./Pagination"
 import { fetchAllRecipe } from "../lib/data-service"
@@ -8,13 +8,16 @@ import RenderRecipes from "./RenderRecipes"
 import Filter from "./Filter"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import Loader from "./Loader"
+import ColdStartLoader from "./ColdStartLoader"
 import { Search, Grid, List } from "lucide-react"
 
 const RecipeList = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [filters, setFilters] = useState({})
-  const [viewMode, setViewMode] = useState("grid") // grid or list
+  const [viewMode, setViewMode] = useState("grid")
   const [searchTerm, setSearchTerm] = useState("")
+  const [loadingStartTime, setLoadingStartTime] = useState(null)
+  const [showColdStartMessage, setShowColdStartMessage] = useState(false)
   const queryClient = useQueryClient()
 
   const queryParams = new URLSearchParams({
@@ -24,10 +27,33 @@ const RecipeList = () => {
     search: searchTerm,
   }).toString()
 
-  const { isPending, data, error } = useQuery({
+  const { isPending, data, error, isStale } = useQuery({
     queryKey: ["recipes", queryParams],
     queryFn: () => fetchAllRecipe(queryParams),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes (formerly cacheTime)
   })
+
+  // Track loading time and show cold start message
+  useEffect(() => {
+    if (isPending && !loadingStartTime) {
+      setLoadingStartTime(Date.now())
+      setShowColdStartMessage(false)
+    }
+
+    if (isPending && loadingStartTime) {
+      const timer = setTimeout(() => {
+        setShowColdStartMessage(true)
+      }, 5000) // Show cold start message after 5 seconds
+
+      return () => clearTimeout(timer)
+    }
+
+    if (!isPending) {
+      setLoadingStartTime(null)
+      setShowColdStartMessage(false)
+    }
+  }, [isPending, loadingStartTime])
 
   const filterMutation = useMutation({
     mutationFn: (newFilters) => {
@@ -53,6 +79,12 @@ const RecipeList = () => {
     setCurrentPage(1)
   }
 
+  // Show cold start loader if loading takes too long
+  if (isPending && showColdStartMessage) {
+    return <ColdStartLoader startTime={loadingStartTime} />
+  }
+
+  // Show regular loader for quick loads
   if (isPending) {
     return <Loader />
   }
@@ -60,11 +92,20 @@ const RecipeList = () => {
   if (error) {
     return (
       <motion.div
-        className="alert alert-error rounded-2xl shadow-lg"
+        className="alert alert-error rounded-2xl shadow-lg max-w-2xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span>Error: {error.message}</span>
+        <div className="flex flex-col gap-2">
+          <span className="font-semibold">Oops! Something went wrong</span>
+          <span className="text-sm opacity-80">{error.message}</span>
+          <button
+            className="btn btn-sm btn-outline mt-2 self-start"
+            onClick={() => queryClient.invalidateQueries(["recipes"])}
+          >
+            Try Again
+          </button>
+        </div>
       </motion.div>
     )
   }
@@ -126,6 +167,7 @@ const RecipeList = () => {
       >
         <p className="text-base-content/60">
           Found <span className="font-semibold text-primary">{allRecipes.length}</span> recipes
+          {isStale && <span className="ml-2 badge badge-warning badge-sm">Updating...</span>}
         </p>
       </motion.div>
 
